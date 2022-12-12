@@ -16,7 +16,7 @@ const MovieCard = (props) => {
           <div className>
             <Link style={{ textDecoration: "none" }} to=''>
 
-              <Card className='col-md-4' >
+              <Card style={{ width: '13rem' }}>
                 <Card.Img  variant="top" src={data.Poster} />
                 <Card.Body >
                   <Card.Title  style={{ color: "black" }}>{data.Title}</Card.Title>
