@@ -8,7 +8,7 @@ const MovieListing = () => {
 
   const movieList = useSelector(getAllMovies)
 
-  console.log("movieList", movieList)
+  // console.log("movieList", movieList)
 
 
 
@@ -18,7 +18,7 @@ const MovieListing = () => {
 
   return (
     <>
-      <div>
+      <div style={{display:"grid",gridTemplateColumns:"auto auto auto",gridTemplateRows:"auto auto auto"}}>
 
          <div >{renderMovies}</div>
       

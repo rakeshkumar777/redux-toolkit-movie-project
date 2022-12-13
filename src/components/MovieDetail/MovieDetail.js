@@ -9,6 +9,7 @@ import { fetchAsyncMovieDetail,getAllMovieDetails } from '../../app/movieSlice'
 
 const MovieDetail = () => {
   const data=useSelector(getAllMovieDetails)
+  console.log("detailData",data)
 const {imdbID}=useParams();
 const dispatch = useDispatch();
 useEffect(()=>{
@@ -23,7 +24,7 @@ useEffect(()=>{
     >
       <Modal.Dialog>
         <Modal.Header closeButton>
-          <Modal.Title>Modal title</Modal.Title>
+          <Modal.Title>{data.Title}</Modal.Title>
         </Modal.Header>
 
         <Modal.Body>
@@ -32,7 +33,7 @@ useEffect(()=>{
 
         <Modal.Footer>
           <Button variant="secondary">Close</Button>
-          <Button variant="primary">Save changes</Button>
+          <Button variant="danger">Watch</Button>
         </Modal.Footer>
       </Modal.Dialog>
     </div>

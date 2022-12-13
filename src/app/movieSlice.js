@@ -5,15 +5,18 @@ import axios from "axios";
 export const fetchAsyncMovies = createAsyncThunk('movies/fetchAsyncMovies', async () => {
 
     const response = await axios.get('http://www.omdbapi.com/?i=tt3896198&apikey=21d6ac12&s=harry')
-    console.log("response", response)
+    // console.log("response", response)
 
     return response.data;
 }
 )
+// http://www.omdbapi.com/?i=tt3896198&apikey=21d6ac12&i={id}&Plot=full
+// https://www.omdbapi.com&s=${seriesText}&type=series
+
 export const fetchAsyncMovieDetail = createAsyncThunk('movies/fetchAsyncMovieDetail', async (id) => {
 
-    const response = await axios.get('http://www.omdbapi.com/?i=tt3896198&apikey=21d6ac12&i={id}&Plot=full')
-    console.log("response", response)
+    const response = await axios.get('')
+    // console.log("response", response)
 
     return response.data;
 }
@@ -36,14 +39,14 @@ const movieSlice = createSlice({
     },
     extraReducers: {
         [fetchAsyncMovies.pending]: () => {
-            console.log("Pending")
+            // console.log("Pending")
         },
         [fetchAsyncMovies.fulfilled]: (state, { payload }) => {
             console.log('Fetched Successfully')
             state.movies = payload
         },
         [fetchAsyncMovies.rejected]: () => {
-            console.log("Rejected")
+            // console.log("Rejected")
         },
         [fetchAsyncMovieDetail.fulfilled]: (state, { payload }) => {
             state.selectMovie = payload

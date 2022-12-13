@@ -1,18 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import {fetchAsyncMovies} from '../../app/movieSlice'
 
 
 const Header = () => {
+  const [term, setTerm] = useState("");
+  const dispatch = useDispatch()
+  const submitHandle = (e) => {
+    e.preventDefault();
+    // console.log(term)
+    dispatch(fetchAsyncMovies(term))
+
+  }
   return (
     <>
       <Navbar bg="light" expand="lg">
         <Container fluid>
-          <Navbar.Brand href="#">Movies</Navbar.Brand>
+          <Navbar.Brand href="/"><b>Movies</b></Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav
@@ -34,14 +44,16 @@ const Header = () => {
               </NavDropdown>
 
             </Nav>
-            <Form className="d-flex">
+            <Form onSubmit={submitHandle} className="d-flex">
               <Form.Control
+                value={term}
+                onChange={(e) => setTerm(e.target.value)}
                 type="search"
                 placeholder="Search"
                 className="me-2"
                 aria-label="Search"
               />
-              <Button variant="outline-success">Search</Button>
+              <Button type='submit' variant="outline-danger">Search</Button>
             </Form>
           </Navbar.Collapse>
         </Container>

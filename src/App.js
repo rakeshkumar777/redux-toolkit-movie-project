@@ -7,18 +7,21 @@ import MovieDetail from './components/MovieDetail/MovieDetail';
 import PageNotFound from './components/PageNotFound/PageNotFound';
 
 // http://www.omdbapi.com/?i=tt3896198&apikey=21d6ac12
+// https://www.omdbapi.com/?apiKey=&i=${id}&Plot=full`)
+// YOURKEYHERE
+// `?apiKey=${APIKey}&i=${id}&Plot=full`
 
 const App = () => {
   return (
     <>
       <Router>
-        <Header/>
+        <Header />
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/movie/:imdbID' element={<MovieDetail />} />
           <Route path='/PageNotFound' element={<PageNotFound />} />
         </Routes>
-        <Footer/>
+        <Footer />
       </Router>
 
 
