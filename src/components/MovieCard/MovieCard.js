@@ -12,9 +12,9 @@ const MovieCard = (props) => {
 
     <>
       <div className='container'>
-        <div className="row text-center">
+        <div className="row">
           <div className>
-            <Link style={{ textDecoration: "none" }} to=''>
+            <Link style={{ textDecoration: "none" }} to={data.imdbID}>
 
               <Card style={{ width: '13rem' }}>
                 <Card.Img  variant="top" src={data.Poster} />
