@@ -1,23 +1,33 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import {fetchAsyncMovies} from '../../app/movieSlice'
+import {getAllMovies} from '../../app/movieSlice'
+
 
 
 const Header = () => {
+  const movieList = useSelector(getAllMovies)
+  // console.log("movieList",movieList)
   const [term, setTerm] = useState("");
-  const dispatch = useDispatch()
+
   const submitHandle = (e) => {
     e.preventDefault();
-    // console.log(term)
-    dispatch(fetchAsyncMovies(term))
 
   }
+  const showingMovies=movieList.filter((item)=>{
+    if(term===""){
+      return item
+
+    }else if(item.Search.toLowerCase().includes(term)){
+      return item
+    }
+  })
+  console.log("showingMovies",showingMovies)
   return (
     <>
       <Navbar bg="light" expand="lg">
